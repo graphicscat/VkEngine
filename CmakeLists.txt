@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.4.0)
+project(VkEngine VERSION 0.1.0)
+find_package(Vulkan REQUIRED)
+find_package(Threads REQUIRED)
+
+set(src_files)
+add_subdirectory(src)
+add_subdirectory(libs)
+
+set(structures_INCLUDE_DIR
+    "libs"
+    "libs/spdlog/include"
+    "libs/gli"
+    "src"
+    "libs/tinyobjloader"
+)
+include(cmake/FindSDL2.cmake)
+add_executable(VkEngine ${src_files} )
+include_directories(VkEngine ${Vulkan_INCLUDE_DIR};${structures_INCLUDE_DIR} )
+
+#target_include_directories(VkEngine PUBLIC libs/tinyobjloader )
+
+target_link_libraries(VkEngine PUBLIC Vulkan::Vulkan SDL2 tinyobjloader)
+
+
+
+
+
