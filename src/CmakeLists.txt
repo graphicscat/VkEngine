@@ -1,0 +1,26 @@
+file(GLOB_RECURSE main_src CONFIGURE_DEPENDS
+    macros.h    
+    main.cpp
+)
+
+file(GLOB_RECURSE framework_src CONFIGURE_DEPENDS
+"Framework/*.cpp"
+"Framework/*.h"
+"Framework/*.hpp"
+)
+
+file(GLOB_RECURSE pass_src CONFIGURE_DEPENDS
+"Pass/*.cpp"
+"Pass/*.h"
+"Pass/*.hpp"
+)
+
+file(GLOB_RECURSE scene_src CONFIGURE_DEPENDS
+"scene/*.cpp"
+"scene/*.h"
+"scene/*.hpp"
+)
+
+
+
+set(src_files "${main_src};${framework_src};${pass_src};${scene_src}" PARENT_SCOPE)
